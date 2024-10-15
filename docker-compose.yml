@@ -1,0 +1,23 @@
+version: '3.8'  # Обновленная версия
+services:
+  postgres:
+    image: postgres:latest  # Указываем последнюю версию
+    container_name: TZ
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: TZ  # Ваше имя пользователя
+      POSTGRES_PASSWORD: TZ  # Ваш пароль
+      POSTGRES_DB: TZ  # Ваша база данных
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    restart: always
+
+  redis:
+    image: redis:alpine3.14
+    container_name: redis-TZ-new
+    ports:
+      - "6379:6379"
+
+volumes:
+  pg-data:  # Объем для хранения данных PostgreSQL
